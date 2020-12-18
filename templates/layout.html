@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>shareIT</title>
+    <link href="{% static 'css/style.css' %}"rel="stylesheet">
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+  </head>
+</html>
+<body>
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand" href="#">
+    iBlog
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">DONATIONS</a>
+          </li>
+           {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'gallery:create'%}">Share New Images</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'gallery:newsfeed'%}">News Feed</a>
+          </li>
+          
+          <li class="nav-item">
+           <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-outline-white" type="submit">Logout</button>
+            </form>
+          
+            </li>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+            </li>
+            
+            {% endif %}
+         </ul>
+     
+      
+</nav>
+
+{% block content %}
+{% endblock %}
+
+
+ <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/typed.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <!--my main js-->
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
+  
+  </body>
+</html>

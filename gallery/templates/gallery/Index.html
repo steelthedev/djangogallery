@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-12 col-lg-8 col-12 text-center mt-5">
+        <h1>Share Your Files With Friends And Many More Users</h1>
+        <button class="btn btn-outline-white hero-btn mt-2">Learn More</button>
+        <a class="btn btn-outline-white h-btn mt-2"href="{% url 'accounts:signup' %}">Sign up</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 mt-5 text-center col-lg-8">
+        <h1>Just A Click And Your File Is Ready To Be Shared</h1>
+        </div>
+        <div class="col-md-12 mt-5">
+        <div class="file">
+          <h2>Files that can be shared</h2>
+          <h3><i class="fa fa-file"></i>Pdf</h3>
+          <h3><i class="fa fa-camera"></i>Images</h3>
+          <h3><i class="fa fa-camera"></i>Videos</h3>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

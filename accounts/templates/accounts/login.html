@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="contianer">
+  <div class="row justify-content-center">
+    <h1>Login</h1>
+    <form action="{% url 'accounts:login' %}" class="sign-form" method="post">
+      {% csrf_token %}
+      <div class="col-md-12 mt-5">
+        <div class="form-group">
+          {{form}}
+          {% if request.GET.next %}
+          <input type="hidden" name="next" value="{{ request.GET.next }}">
+          {% endif %}
+          
+        </div>
+      </div>
+      <button class="btn btn-outline-white" name="submit">Log in</button>
+      
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
