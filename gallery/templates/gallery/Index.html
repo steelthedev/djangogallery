@@ -1,34 +1,32 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<section class="hero">
-  <div class="container">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-md-12 col-lg-8 col-12 text-center mt-5">
-        <h1>Share Your Files With Friends And Many More Users</h1>
-        <button class="btn btn-outline-white hero-btn mt-2">Learn More</button>
-        <a class="btn btn-outline-white h-btn mt-2"href="{% url 'accounts:signup' %}">Sign up</a>
+<section class="login pt-3">
+  <div class=" container mt-5">
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-8 col-md-12 col-sm-12">
+        <h2>Login</h2>
       </div>
-    </div>
-  </div>
-</section>
+     
+        <form action="{% url 'accounts:login' %}" method="post">
+          {% csrf_token %}
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-2  ">
+              <div class="form-group mt-2">
+                <input type="text" class="form-control" placeholder="Username" name="username">
+              </div>
+              <div class="form-group mt-2">
+                <input type="password" class="form-control border-outline-none" placeholder="Password" name="password">
+              </div>  
+          <button class="btn btn-outline-white login-btn " type="submit">Submit</button>
+            </div>
+         </div>
+        </form>
 
-<section class="intro">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-12 mt-5 text-center col-lg-8">
-        <h1>Just A Click And Your File Is Ready To Be Shared</h1>
-        </div>
-        <div class="col-md-12 mt-5">
-        <div class="file">
-          <h2>Files that can be shared</h2>
-          <h3><i class="fa fa-file"></i>Pdf</h3>
-          <h3><i class="fa fa-camera"></i>Images</h3>
-          <h3><i class="fa fa-camera"></i>Videos</h3>
-        </div>
-        </div>
-      </div>
+      
+
     </div>
+    
   </div>
 </section>
 
