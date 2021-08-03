@@ -5,5 +5,6 @@ app_name='gallery'
 
 urlpatterns = [
     path('',views.homepage, name='homepage'),
+    path('create', views.Create , name="create")
    
 ]

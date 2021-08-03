@@ -1,33 +1,117 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<section class="login pt-3">
-  <div class=" container mt-5">
-    <div class="row justify-content-center mt-5">
-      <div class="col-lg-8 col-md-12 col-sm-12">
-        <h2>Login</h2>
-      </div>
-     
-        <form action="{% url 'accounts:login' %}" method="post">
-          {% csrf_token %}
-          <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-2  ">
-              <div class="form-group mt-2">
-                <input type="text" class="form-control" placeholder="Username" name="username">
-              </div>
-              <div class="form-group mt-2">
-                <input type="password" class="form-control border-outline-none" placeholder="Password" name="password">
-              </div>  
-          <button class="btn btn-outline-white login-btn " type="submit">Submit</button>
-            </div>
-         </div>
-        </form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="lib/lightbox/css/lightbox.min.css">
+        <link rel="stylesheet" href="aos/aos.css">
 
-      
+        <title>
+            iGram
+        </title>
+    </head>
 
-    </div>
+
+    <body>
+        
+
+
+           
     
-  </div>
-</section>
+
+
+        <section class="images">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-lg-4 text-center image-function " data-aos="zoom-out"data-aos-delay="150">
+                        <ul class="img-ul">
+                         
+                            <li>
+                                <form action="" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control shadow-none " placeholder="Search Image">
+                                    </div>
+                                    <a href="" class="btn btn-outline-white s-btn shadow-none" ><span class="fa fa-lens"></span> Click to Search</span>
+                                    </a>
+                                </form>
+                               
+                             </li>
+
+                             <div></div>
+
+                            <li>
+                                <a href="" class="btn btn-outline-white i-btn shadow-none" ><span class="fa fa-bars"></span> Categories</span>
+                              </a>
+                             </li>
+
+                            <li>
+                               <a href="{% url 'gallery:create' %}" class="btn btn-outline-white i-btn shadow-none" ><span class="fa fa-plus"></span> Add Image</span>
+                             </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-8 col-md-8">
+                        <div class="row justify-content-center">
+                            {% for image in gallery %} 
+                          
+                          <div class="col-md-4 col-lg-4 mt-3 ml-auto">
+                                <div class="img-single" data-aos="zoom-in"data-aos-delay="200">
+                                    <div class="work-box">
+                                        <a href="{{image.thumb.url}}">
+                                            <div class="work-img">
+                                                <img src="{{image.thumb.url}}" alt="" width="100%">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                          {% endfor %}
+
+                           
+                           
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

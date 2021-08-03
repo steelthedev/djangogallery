@@ -1,21 +1,58 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="contianer">
-  <div class="row justify-content-center">
-    <h1>Sign up</h1>
-    <form action="{% url 'accounts:signup' %}" class="sign-form" method="post">
-      {% csrf_token %}
-      <div class="col-md-12 mt-5">
-        <div class="shadow-none mt-3">
-          {{form}}
-        </div>
+<section class="login">
+  <div class="container">
+      <div class="row justify-content-center mt-2">
+          <div class="col-md-8 col-lg-8 ">
+              <form action="{% url 'accounts:signup' %}" method="POST">
+                {% csrf_token %}
+                  <div class="row justify-content-center">
+                      <div class="col-md-12 col-lg-8">
+
+                        {% if messages %}
+                    {% for message in messages %}
+                        <div class=" alert alert-dismissible text-center fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    {% endfor %}
+
+                        {% endif %}
+                          <h2>
+                              Sign Up
+                          </h2>
+
+                          <div class="form-group mt-4 pt-1">
+                             
+                              <input type="text" class="form-control shadow-none" placeholder="Username" required name="username">
+                          </div>
+
+                          
+                          <div class="form-group mt-4 pt-1">
+                              <input type="password" class="form-control shadow-none" placeholder="Password" name="pwd1" required>
+                          </div>
+
+                          <div class="form-group mt-4 pt-1">
+                              <input type="password" class="form-control shadow-none" placeholder="Confirm Password" name="pwd2" required>
+                          </div>
+
+                          <button type="submit" class="btn btn-outline-white s-btn">Sign Up</button>
+                          <small>Already have an Accont? <a href="">Login</a></small>
+                      </div>
+                  </div>
+                 
+              </form>
+          </div>
       </div>
-      <button class="btn btn-outline-white" name="submit"type="submit">Submit</button>
-      
-    </form>
   </div>
-</div>
+</section>
+
+
+
+
 
 
  

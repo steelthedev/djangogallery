@@ -2,55 +2,30 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>shareIT</title>
-    <link href="{% static 'css/style.css' %}"rel="stylesheet">
-    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-      <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-
+    <title>iGram</title>
+	<link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'lib/font-awesome/css/font-awesome.min.css' %} ">
+	<link rel="stylesheet" href='{% static "lib/lightbox/css/lightbox.min.css" %}'>
+	<link rel="stylesheet" href="{% static 'aos/aos.css' %}">
   </head>
 </html>
 <body>
-  <nav class="navbar navbar-expand-md navbar-light navbar-fixed nav-bar" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="">Fiesulec</a>
-			<button class="navbar-toggler" type="button" 
-			data-bs-toggle="collapse" 
-			data-bs-target="#toggleMobileMenu" 
-			aria-controls="#toggleMobileMenu" 
-			aria-expanded="false" 
-			aria-label="Toggle navigation">
-				<span class="oi oi-menu"><i class="fa fa-bars"></i></span> 
-			</button>
-
-			<div class="collapse navbar-collapse" id="toggleMobileMenu">
-				<ul class="navbar-nav ms-auto text-center ">
-					<li class="nav-item active"><a href="" class="nav-link">Home</a></li>
-			{% if request.user.is_authenticated %}
-					<li class="nav-item"><a href="" class="nav-link">Dashboard</a></li>
-					<li class="nav-item"><a href="" class="nav-link">Resolutions</a></li>
-					<li class="nav-item"><a href="" class="nav-link">Logout</a></li>
-					{% else %}
-					<li class="nav-item"><a href="" class="nav-link">Login</a></li>
-					{% endif %}
-				</ul>
-			</div>
-		</div>
-	</nav>
+ 
+	<div class="header mt-3 pt-3 " data-aos="fade-right" data-aos-delay="100" >
+		<h2>
+			iGram
+		</h2>
+	</div>
 
 {% block content %}
+
 {% endblock %}
 
 
- <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/typed.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <!--my main js-->
-  <script src="js/contact.js"></script>
-  <script src="js/main.js"></script>
-  
+<script src="{& static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
   </body>
 </html>

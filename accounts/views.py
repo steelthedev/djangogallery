@@ -1,19 +1,45 @@
+from django.http import request
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
+from django.contrib import messages
+from django.contrib.auth.hashers import make_password
+
 
 # Create your views here.
 def signup(request):
-  if request.method=='POST':
-    form=UserCreationForm(request.POST)
-    if form.is_valid():
-      user=form.save()
-      login(request,user)
-      return redirect('gallery:newsfeed')
+  if request.method == "POST":
+    username=request.POST["username"]
+    password=request.POST["pwd1"]
+    password2=request.POST["pwd2"]
+    
+
+    user = User.objects.filter(username=username)
+
+    if user.exists():
+      messages.error(request, "User Already Exists with the same username ")
+      return redirect('accounts:signup')
+
+    elif password != password2:
+      messages.error(request, "passwords must be the same ")
+      return redirect('accounts:signup')
+
+    elif username in User.objects.all():
+      messages.error(request, "User Already Exists with the same username ")
+      return redirect('accounts:signup')
+
+    else:
+      hashedpwd = make_password(password)
+      user = User.objects.create(username= username , password = hashedpwd)
+      user.save()
+      messages.success(request, "Account Successfully Created ")
+      return redirect('accounts:login')
       
-  else:
-    form=UserCreationForm()
-  return render(request,'accounts/signup.html',{'form':form})
+ 
+
+      
+
+  return render(request,'accounts/signup.html')
 
 
 
@@ -31,7 +57,7 @@ def LoginView(request):
 
     return redirect("gallery:create")
 
-  return render(request,'gallery/index.html')
+  return render(request,'accounts/login.html')
 
 
   
