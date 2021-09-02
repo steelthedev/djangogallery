@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section class="images">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-lg-4 text-center image-function " >
+                <ul class="img-ul">
+                 
+                    <li>
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control shadow-none " placeholder="Search Image">
+                            </div>
+                            <a href="" class="btn btn-outline-white s-btn shadow-none" ><span class="fa fa-lens"></span> Click to Search</span>
+                            </a>
+                        </form>
+                       
+                     </li>
+
+                     <div></div>
+
+                    <li>
+                        <a href="" class="btn btn-outline-white i-btn shadow-none" ><span class="fa fa-bars"></span> Categories</span>
+                      </a>
+                     </li>
+
+                    <li>
+                       <a href="{% url 'gallery:create' %}" class="btn btn-outline-white i-btn shadow-none" ><span class="fa fa-plus"></span> Add Image</span>
+                     </a>
+                    </li>
+                </ul>
+            </div>
+
+
+{% endblock %}

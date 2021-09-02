@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section class="search">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-8 text-center">
+                <h6>Your search result has {{l}} returns</h6>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            {% for r in result %}
+
+            <div class="col-md-6 col-lg-4 mt-3">
+                <div class="image">
+                    <img src="{{r.thumb.url}}" width="100%" >
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+            
+
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

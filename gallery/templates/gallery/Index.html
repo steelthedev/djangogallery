@@ -5,16 +5,17 @@
         <section class="images">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-md-4 col-lg-4 text-center image-function " data-aos="zoom-out"data-aos-delay="150">
+                    <div class="col-md-4 col-lg-4 text-center image-function " >
                         <ul class="img-ul">
                          
                             <li>
-                                <form action="" method="POST">
+                                <form action="{% url 'gallery:search' %}" method="POST">
+                                    {% csrf_token %}
                                     <div class="form-group">
-                                        <input type="text" class="form-control shadow-none " placeholder="Search Image">
+                                        <input type="text" class="form-control shadow-none " name="search" placeholder="Search Image">
                                     </div>
-                                    <a href="" class="btn btn-outline-white s-btn shadow-none" ><span class="fa fa-lens"></span> Click to Search</span>
-                                    </a>
+                                    <button type="submit" name="submit_search" class="btn btn-outline-white s-btn shadow-none" ><span class="fa fa-lens"></span> Click to Search</span>
+                                    </button>
                                 </form>
                                
                              </li>
@@ -38,7 +39,7 @@
                             {% for image in gallery %} 
                           
                           <div class="col-md-4 col-lg-4 mt-3 ml-auto">
-                                <div class="img-single" data-aos="zoom-in"data-aos-delay="200">
+                                <div class="img-single" >
                                     <div class="work-box">
                                         <a href="{{image.thumb.url}}">
                                             <div class="work-img">
@@ -61,33 +62,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

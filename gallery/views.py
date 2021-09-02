@@ -8,9 +8,11 @@ def homepage(request):
 
   gallery = Gallery.objects.all()
 
+
   context = {
 
-    'gallery':gallery
+    'gallery':gallery,
+  
   }
 
   return render(request,'gallery/index.html', context)
@@ -23,11 +25,28 @@ def Create(request):
       category = request.POST['category']
       thumb = request.FILES.getlist('image')
       description = request.POST['description']
+      
 
       for image in thumb:
-        gallery = Gallery.objects.create(name=name, category = category , thumb = image  )
-        gallery.save()
-        return redirect("gallery:homepage")
+        g = Gallery.objects.create( name=name, category = category , thumb = image )
+      return redirect('gallery:homepage') 
       
   return render(request, 'gallery/gallerycreate.html')
+
+
+
+def Search(request):
+  if request.method == "POST":
+    submit_button = request.POST["submit_search"]
+    search = request.POST.get("search")
+    result = Gallery.objects.filter(name__contains = search)
+    result_lenght = len(result)
+    context = {
+      'result':result,
+      'l':result_lenght
+    }
+    return render(request, 'gallery/search.html', context)
+      
+
+
   
