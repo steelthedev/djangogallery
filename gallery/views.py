@@ -26,6 +26,8 @@ def Create(request):
 
       for image in thumb:
         gallery = Gallery.objects.create(name=name, category = category , thumb = image  )
+        gallery.save()
+        return redirect("gallery:homepage")
       
   return render(request, 'gallery/gallerycreate.html')
   
